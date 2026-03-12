@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 10000
 
 spring:
   application:
@@ -8,43 +8,43 @@ spring:
     gateway:
       routes:
         - id: auth-service
-          uri: http://localhost:8081
+          uri: http://localhost:10000
           predicates:
             - Path=/api/auth/**
         - id: account-documents
-          uri: http://localhost:8082
+          uri: http://localhost:10000
           predicates:
             - Path=/api/accounts/documents/**
         - id: account-register
-          uri: http://localhost:8082
+          uri: http://localhost:10000
           predicates:
             - Path=/api/accounts/register
         - id: account-admin
-          uri: http://localhost:8082
+          uri: http://localhost:10000
           predicates:
             - Path=/api/accounts/admin/**
           filters:
             - JwtAuthFilter
         - id: account-service
-          uri: http://localhost:8082
+          uri: http://localhost:10000
           predicates:
             - Path=/api/accounts/summary,/api/accounts/cards/**,/api/accounts/fd/**,/api/beneficiaries/**
           filters:
             - JwtAuthFilter
         - id: transaction-service
-          uri: http://localhost:8083
+          uri: http://localhost:10000
           predicates:
             - Path=/api/transfers/**
           filters:
             - JwtAuthFilter
         - id: atm-admin
-          uri: http://localhost:8084
+          uri: http://localhost:10000
           predicates:
             - Path=/api/atm/admin/**
           filters:
             - JwtAuthFilter
         - id: atm-service
-          uri: http://localhost:8084
+          uri: http://localhost:10000
           predicates:
             - Path=/api/atm/**
 
